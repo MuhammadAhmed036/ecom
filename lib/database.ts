@@ -1,8 +1,12 @@
 import { Pool } from 'pg';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL?.includes('localhost') ? false : { rejectUnauthorized: false },
+  ssl: isProduction ? {
+    rejectUnauthorized: false
+  } : false
 });
 
 export default pool;

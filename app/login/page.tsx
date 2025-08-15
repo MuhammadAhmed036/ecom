@@ -200,7 +200,15 @@ const LoginPage = () => {
             </Link>
           </motion.form>
 
-          
+          {/* Test Credentials */}
+          <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+            <h3 className="text-sm font-semibold text-blue-900 mb-2">Test Credentials:</h3>
+            <div className="text-xs text-blue-800 space-y-1">
+              <p><strong>Super Admin:</strong> superadmin@ahmedbrands.com / superadmin123</p>
+              <p><strong>Admin:</strong> admin@ahmedbrands.com / admin123</p>
+              <p><strong>Customer:</strong> customer@ahmedbrands.com / customer123</p>
+            </div>
+          </div>
         </motion.div>
       </div>
 

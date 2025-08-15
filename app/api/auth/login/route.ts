@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:1234@localhost:5432/ecommerce_db',
 });
 
 export async function POST(request: NextRequest) {
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
     const user = result.rows[0];
 
     // Check if user is approved (for admin and superadmin roles)
-    if ((user.role === 'admin' || user.role === 'superadmin') && !user.is_approved) {
+    if ((user.role === 'admin' || user.role === 'superadmin' || user.role === 'head') && !user.is_approved) {
       return NextResponse.json(
         { message: 'Your account is pending approval. Please contact the administrator.' },
         { status: 403 }
